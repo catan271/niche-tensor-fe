@@ -10,6 +10,7 @@
     },
     "dependencies": {
         "antd": "^4.16.3",
+        "axios": "^1.6.7",
         "next": "12.3.4",
         "react": "^18",
         "react-dom": "^18",
@@ -19,6 +20,8 @@
         "@types/node": "^20",
         "@types/react": "^18",
         "@types/react-dom": "^18",
+        "@typescript-eslint/eslint-plugin": "^6.20.0",
+        "@typescript-eslint/parser": "^6.20.0",
         "autoprefixer": "^10.0.1",
         "eslint": "^8",
         "eslint-config-next": "14.1.0",
