@@ -1,10 +1,9 @@
-import { Button } from 'antd';
+import PromptingPanel from '@/components/PromptingPanel';
 
 export default function Home() {
     return (
         <main>
-            Hello world
-            <Button className="h-100">Click me</Button>
+            <PromptingPanel />
         </main>
     );
 }
