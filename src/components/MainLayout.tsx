@@ -14,8 +14,12 @@ const MainLayout: React.FC<MainLayoutProp> = ({ children }) => {
                 <div className="logo" />
                 <Menu theme="dark" mode="horizontal" />
             </Header>
-            <Content style={{ padding: '0 50px', height: '80vh' }}>{children}</Content>
-            <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+            <Content className="bg-background" style={{ padding: '0 10px', height: '100vh' }}>
+                {children}
+            </Content>
+            <Footer className="bg-btnBg" style={{ textAlign: 'center' }}>
+                <span className="text-text">Ant Design ©2018 Created by Ant UED</span>
+            </Footer>
         </Layout>
     );
 };

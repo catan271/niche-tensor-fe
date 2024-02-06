@@ -16,6 +16,17 @@ module.exports = {
                 pc: '1200px',
             },
         },
+        colors:{
+            "background":'#292c31',
+            "input":'#25282c',
+            "inputBorder":'#3E4145',
+            "text":'#a4a5a7',
+            "placeholder":'#6f7070',
+            "btnBg":'#212428',
+            "white":'#FFF',
+            "blue":'#00a1d7',
+            "slider":'#36383d'
+        }
     },
     variants: {
         extend: {},
