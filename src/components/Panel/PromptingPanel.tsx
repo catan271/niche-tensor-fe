@@ -1,10 +1,18 @@
 import React from 'react';
 import DashedButton from '@/components/Elements/DashedButton';
 import Slider from '@/components/Elements/Slider';
+import SquareAspect from '@/components/Panel/Dropdown/SquareAspect';
+import SvgIcon from '@/svg/SvgIcon';
+import Style from '@/components/Panel/Dropdown/Style';
 
 const PromptingPanel = () => {
+    const [isSquareAspect, setSquareAspect] = React.useState(false);
+    const [isStyle, setIsStyle] = React.useState(false);
+    const [aspect, setAspect] = React.useState('Square');
+    const [style, setStyle] = React.useState('No');
+
     return (
-        <div className="container border p-25">
+        <div className="container border pt-10">
             <div className="container border-2 border-solid border-inputBorder p-30 bg-input rounded-lg">
                 <label
                     htmlFor="large-input"
@@ -19,53 +27,27 @@ const PromptingPanel = () => {
                     placeholder="What do you want to see?"
                 />
                 <div className="pt-20 flex flex-row gap-15">
-                    <DashedButton
-                        icon={
-                            <svg
-                                width="25px"
-                                height="25px"
-                                viewBox="-6.48 -6.48 36.96 36.96"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                                stroke="#b7b8ba"
-                            >
-                                <g id="SVGRepo_bgCarrier" strokeWidth="0">
-                                    <rect
-                                        x="-6.48"
-                                        y="-6.48"
-                                        width="36.96"
-                                        height="36.96"
-                                        rx="18.48"
-                                        fill="#3a3c40"
-                                        strokeWidth="0"
-                                    ></rect>
-                                </g>
-                                <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
-                                <g id="SVGRepo_iconCarrier">
-                                    {' '}
-                                    <rect
-                                        x="4"
-                                        y="4"
-                                        width="16"
-                                        height="16"
-                                        rx="2"
-                                        stroke="#b7b8ba"
-                                        strokeWidth="2.4"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    ></rect>{' '}
-                                </g>
-                            </svg>
-                        }
-                        title={'Square Aspect'}
-                    />
-                    <DashedButton title={'No Style'} />
+                    <div className="relative">
+                        <DashedButton
+                            onMouseLeave={() => setSquareAspect(false)}
+                            onClick={() => setSquareAspect(!isSquareAspect)}
+                            icon={<SvgIcon type={`${aspect}Bg`} />}
+                            title={`${aspect} Aspect`}
+                        />
+                        {isSquareAspect && (
+                            <SquareAspect setItem={(e: any) => setAspect(e)} onclose={() => setSquareAspect(false)} />
+                        )}
+                    </div>
+                    <div className="relative">
+                        <DashedButton onClick={() => setIsStyle(!isStyle)} title={`${style} Style`} />
+                        {isStyle && <Style setItem={(e: any) => setStyle(e)} onclose={() => setIsStyle(false)} />}
+                    </div>
                     <DashedButton title={'No Color'} />
                     <DashedButton title={'No Lightning'} />
                     <DashedButton title={'No Composition'} />
                 </div>
             </div>
-            <div className="flex justify-between pt-2">
+            <div className="flex justify-between">
                 <div className="pt-20 flex flex-row items-center gap-20">
                     <Slider title={'Negative prompt'} />
                     <Slider title={'Make private'} />

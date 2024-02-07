@@ -9,12 +9,11 @@ interface MainLayoutProp {
 
 const MainLayout: React.FC<MainLayoutProp> = ({ children }) => {
     return (
-        <Layout className="layout">
+        <Layout className="layout justify-between flex flex-col">
             <Header>
-                <div className="logo" />
-                <Menu theme="dark" mode="horizontal" />
+                <h1 className="text-white">NicheTensor</h1>
             </Header>
-            <Content className="bg-background" style={{ padding: '0 10px', height: '100vh' }}>
+            <Content className="mb-auto h-screen bg-background" style={{ padding: '0 10px', height: '100vh' }}>
                 {children}
             </Content>
             <Footer className="bg-btnBg" style={{ textAlign: 'center' }}>
