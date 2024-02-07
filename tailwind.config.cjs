@@ -26,7 +26,8 @@ module.exports = {
             "white":'#FFF',
             "blue":'#00a1d7',
             "slider":'#36383d',
-            'red':'#ff0000'
+            'red':'#ff0000',
+            'rgba-black':'rgba(0,0,0,0.54)'
         }
     },
     variants: {
