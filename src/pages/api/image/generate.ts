@@ -1,10 +1,10 @@
 import { Post, Body, Res, createHandler, Catch } from 'next-api-decorators';
-import { AspectRatioValue } from '../../../types/AspectRatio';
-import { api } from '../../../server/utils/api';
-import { GenerateDto } from '../../../dto/GenerateDto';
+import { AspectRatioValue } from '@/types/AspectRatio';
+import { api } from '@/server/utils/api';
+import { GenerateDto } from '@/dto/GenerateDto';
 import type { NextApiResponse } from 'next';
-import { exceptionHandler } from '../../../server/utils/exceptionHandler';
-import { GenerateResponse } from '../../../types/GenerateResponse';
+import { exceptionHandler } from '@/server/utils/exceptionHandler';
+import { GenerateResponse } from '@/types/GenerateResponse';
 
 @Catch(exceptionHandler)
 class GenerateHandler {
