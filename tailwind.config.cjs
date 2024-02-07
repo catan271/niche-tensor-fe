@@ -25,7 +25,8 @@ module.exports = {
             "btnBg":'#212428',
             "white":'#FFF',
             "blue":'#00a1d7',
-            "slider":'#36383d'
+            "slider":'#36383d',
+            'red':'#ff0000'
         }
     },
     variants: {

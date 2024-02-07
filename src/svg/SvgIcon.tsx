@@ -5,6 +5,23 @@ interface SvgIconInterface {
 }
 const SvgIcon: React.FC<SvgIconInterface> = ({ type }) => {
     switch (type) {
+        case 'Rectangle':
+            return (
+                <svg
+                    fill="#ff0000"
+                    width="64px"
+                    height="64px"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    stroke="#36383d"
+                >
+                    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                    <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <path d="M21,21H3L12,3Z"></path>
+                    </g>
+                </svg>
+            );
         case 'TallBg':
             return (
                 <svg
