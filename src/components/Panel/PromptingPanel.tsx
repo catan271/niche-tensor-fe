@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import DashedButton from '@/components/Elements/DashedButton';
-import Slider from '@/components/Elements/Slider';
 import SquareAspect from '@/components/Panel/Dropdown/SquareAspect';
 import SvgIcon from '@/svg/SvgIcon';
 import TypeList from '@/components/Panel/Dropdown/TypeList';
@@ -14,15 +13,15 @@ interface Props {
     setImage: any;
     loading: any;
     setLoading: any;
-    prompt: any;
-    setPrompt: any;
+    example: any;
 }
-const PromptingPanel: React.FC<Props> = ({ setImage, loading, setLoading, prompt, setPrompt }) => {
+const PromptingPanel: React.FC<Props> = ({ setImage, loading, setLoading, example }) => {
     const [isSquareAspect, setSquareAspect] = React.useState(false);
     const [isStyle, setIsStyle] = React.useState(false);
     const [isModelName, setIsModelName] = React.useState(false);
     const [aspect, setAspect] = React.useState<any>(AspectRatio.Square);
-    const [style, setStyle] = React.useState<any>(null);
+    const [style, setStyle] = React.useState<any>('');
+    const [prompt, setPrompt] = React.useState('');
     const [modelName, setModelName] = React.useState<any>(ModelName.RealisticVision);
     const styleList = [
         { name: 'None', value: '' },
@@ -55,6 +54,9 @@ const PromptingPanel: React.FC<Props> = ({ setImage, loading, setLoading, prompt
             throw error;
         }
     };
+    useEffect(() => {
+        setPrompt(example);
+    }, [example]);
 
     return (
         <div className="container border pt-10">

@@ -6,7 +6,7 @@ import React from 'react';
 export default function Home() {
     const [image, setImage] = React.useState('');
     const [loading, setLoading] = React.useState(false);
-    const [prompt, setPrompt] = React.useState('');
+    const [example, setExample] = React.useState('');
 
     return (
         <>
@@ -15,15 +15,14 @@ export default function Home() {
                     <div className="grid grid-rows-2 gap-4">
                         <div className="row-span-1">
                             <PromptingPanel
-                                prompt={prompt}
-                                setPrompt={prompt}
                                 loading={loading}
                                 setLoading={setLoading}
                                 setImage={setImage}
+                                example={example}
                             />
                         </div>
                         <div className="row-span-1">
-                            <ExamplePanel setPrompt={setPrompt} />
+                            <ExamplePanel setExample={setExample} />
                         </div>
                     </div>
                 </div>

@@ -1,9 +1,9 @@
 import React from 'react';
 
 interface ExampleProps {
-    setPrompt: any;
+    setExample: any;
 }
-const ExamplePanel: React.FC<ExampleProps> = ({ setPrompt }) => {
+const ExamplePanel: React.FC<ExampleProps> = ({ setExample }) => {
     const exampleList = [
         {
             image: 'https://img.freepik.com/free-photo/close-up-cute-fluffy-kitten-staring-generative-ai_188544-9120.jpg',
@@ -36,17 +36,14 @@ const ExamplePanel: React.FC<ExampleProps> = ({ setPrompt }) => {
             <div className="grid grid-cols-4 gap-5">
                 {exampleList.map((item, key) => {
                     return (
-                        <div key={key} className="relative cursor-pointer">
+                        <div key={key} className="relative cursor-pointer" onClick={() => setExample(item.value)}>
                             <img
                                 className="h-full max-w-full object-cover rounded-sm hover:blur-sm"
                                 src={item.image}
                                 alt=""
                             />
                             <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-200 ease-in hover:bg-rgba-black bg-opacity-20">
-                                <span
-                                    onClick={() => setPrompt(item.value)}
-                                    className="text-white text-xl z-10 px-4 text-center overflow-hidden"
-                                >
+                                <span className="text-white text-xl z-10 px-4 text-center overflow-hidden">
                                     <span className="line-clamp-3">{item.value}</span>
                                 </span>
                             </div>
