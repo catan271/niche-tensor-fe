@@ -24,7 +24,7 @@ const ShowImagePanel: React.FC<Props> = ({ image, loading }) => {
             ) : (
                 <div className=" group flex h-full flex-col p-20 rounded-md justify-center bg-input space-x-5">
                     <img
-                        className="h-auto max-w-full object-contain rounded-sm"
+                        className="h-full max-w-full object-contain rounded-sm"
                         src={`data:image/png;base64,${image}`}
                         alt=""
                     />

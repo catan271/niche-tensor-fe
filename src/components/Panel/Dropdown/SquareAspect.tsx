@@ -1,12 +1,17 @@
 import SvgIcon from '@/svg/SvgIcon';
 import React from 'react';
+import { AspectRatio } from '@/types/AspectRatio';
 
 interface SquareAspectProps {
     onclose: any;
     setItem: any;
 }
 const SquareAspect: React.FC<SquareAspectProps> = ({ onclose, setItem }) => {
-    const aspectList = [{ name: 'Square' }, { name: 'Wide' }, { name: 'Tall' }];
+    const aspectList = [
+        { name: 'Square', value: AspectRatio.Square },
+        { name: 'Wide', value: AspectRatio.Wide },
+        { name: 'Tall', value: AspectRatio.Tall },
+    ];
 
     return (
         <>
@@ -25,7 +30,7 @@ const SquareAspect: React.FC<SquareAspectProps> = ({ onclose, setItem }) => {
                                 role="menuitem"
                                 tabIndex={-1}
                                 id="menu-item-0"
-                                onClick={() => setItem(item.name)}
+                                onClick={() => setItem(item.value)}
                             >
                                 <SvgIcon type={item.name} />
                                 <span>{item.name}</span>

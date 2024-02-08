@@ -54,7 +54,7 @@ const SvgIcon: React.FC<SvgIconInterface> = ({ type }) => {
                     </g>
                 </svg>
             );
-        case 'TallBg':
+        case 'WideBg':
             return (
                 <svg
                     width="25px"
@@ -92,7 +92,7 @@ const SvgIcon: React.FC<SvgIconInterface> = ({ type }) => {
                     </g>
                 </svg>
             );
-        case 'WideBg':
+        case 'TallBg':
             return (
                 <svg
                     width="25px"

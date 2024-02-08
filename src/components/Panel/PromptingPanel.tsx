@@ -3,10 +3,12 @@ import DashedButton from '@/components/Elements/DashedButton';
 import Slider from '@/components/Elements/Slider';
 import SquareAspect from '@/components/Panel/Dropdown/SquareAspect';
 import SvgIcon from '@/svg/SvgIcon';
-import Style from '@/components/Panel/Dropdown/Style';
+import TypeList from '@/components/Panel/Dropdown/TypeList';
 import axios from 'axios';
 import { GenerateDto } from '@/dto/GenerateDto';
 import { AspectRatio } from '@/types/AspectRatio';
+import { Style } from '@/types/Style';
+import { ModelName } from '@/types/ModelName';
 
 interface Props {
     setImage: any;
@@ -16,14 +18,28 @@ interface Props {
 const PromptingPanel: React.FC<Props> = ({ setImage, loading, setLoading }) => {
     const [isSquareAspect, setSquareAspect] = React.useState(false);
     const [isStyle, setIsStyle] = React.useState(false);
+    const [isModelName, setIsModelName] = React.useState(false);
     const [aspect, setAspect] = React.useState<any>(AspectRatio.Square);
     const [style, setStyle] = React.useState<any>(null);
+    const [modelName, setModelName] = React.useState<any>(ModelName.RealisticVision);
     const [prompt, setPrompt] = React.useState('');
+    const styleList = [
+        { name: 'None', value: '' },
+        { name: 'Realistic', value: Style.Realistic },
+        { name: 'Cartoon', value: Style.Cartoon },
+        { name: 'Anime', value: Style.Anime },
+    ];
+    const modelNameList = [
+        { name: 'RealisticVision', value: ModelName.RealisticVision },
+        { name: 'AnimeV3', value: ModelName.AnimeV3 },
+        { name: 'SDXLTurbo', value: ModelName.SDXLTurbo },
+    ];
     const generateImage = async () => {
         const requestBody: Partial<GenerateDto> = {
             prompt: prompt,
             aspectRatio: aspect,
             style: style,
+            modelName: modelName,
         };
 
         try {
@@ -33,6 +49,7 @@ const PromptingPanel: React.FC<Props> = ({ setImage, loading, setLoading }) => {
             setImage(response.data.data);
             setLoading(false);
         } catch (error) {
+            setLoading(false);
             console.error(error);
             throw error;
         }
@@ -68,12 +85,31 @@ const PromptingPanel: React.FC<Props> = ({ setImage, loading, setLoading }) => {
                         )}
                     </div>
                     <div className="relative">
-                        <DashedButton onClick={() => setIsStyle(!isStyle)} title={`${style} Style`} />
-                        {isStyle && <Style setItem={(e: any) => setStyle(e)} onclose={() => setIsStyle(false)} />}
+                        <DashedButton
+                            onClick={() => setIsStyle(!isStyle)}
+                            title={style === '' ? 'No Style' : `${style} Style`}
+                        />
+                        {isStyle && (
+                            <TypeList
+                                typeList={styleList}
+                                setItem={(e: any) => setStyle(e)}
+                                onclose={() => setIsStyle(false)}
+                            />
+                        )}
                     </div>
-                    <DashedButton title={'No Color'} />
-                    <DashedButton title={'No Lightning'} />
-                    <DashedButton title={'No Composition'} />
+                    <div className="relative">
+                        <DashedButton
+                            onClick={() => setIsModelName(!isModelName)}
+                            title={modelName === '' ? 'No Model Name' : `${modelName}`}
+                        />
+                        {isModelName && (
+                            <TypeList
+                                typeList={modelNameList}
+                                setItem={(e: any) => setModelName(e)}
+                                onclose={() => setIsModelName(false)}
+                            />
+                        )}
+                    </div>
                 </div>
             </div>
             <div className="flex justify-between">
