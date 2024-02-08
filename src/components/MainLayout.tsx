@@ -17,7 +17,7 @@ const MainLayout: React.FC<MainLayoutProp> = ({ children }) => {
                 {children}
             </Content>
             <Footer className="bg-btnBg" style={{ textAlign: 'center' }}>
-                <span className="text-text">Ant Design ©2018 Created by Ant UED</span>
+                <span className="text-text">ABCD ©2023 Created by NicheTensor</span>
             </Footer>
         </Layout>
     );
