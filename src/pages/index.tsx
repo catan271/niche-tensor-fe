@@ -9,7 +9,7 @@ export default function Home() {
     const [example, setExample] = React.useState('');
 
     return (
-        <div className="mb-0 grid grid-cols-5 gap-4">
+        <div className="overflow-y-hidden mb-0 grid grid-cols-5 gap-4">
             <div className="col-span-3">
                 <div className="grid grid-rows-2 gap-4">
                     <div className="row-span-1">

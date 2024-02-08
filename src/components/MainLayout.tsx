@@ -9,7 +9,7 @@ interface MainLayoutProp {
 
 const MainLayout: React.FC<MainLayoutProp> = ({ children }) => {
     return (
-        <Layout>
+        <Layout className="flex flex-col w-full min-h-screen overflow-x-hidden">
             <Header className="bg-btnBg">
                 <img
                     src={
