@@ -11,7 +11,7 @@ const DashedButton: React.FC<ButtonProps> = ({ onClick, title, icon }) => {
     return (
         <button
             onClick={onClick}
-            className="cursor-pointer outline-dashed rounded-full border-none outline-2 outline-offset-3 p-10 outline-inputBorder bg-btnBg focus:outline-white focus:outline  "
+            className="h-50 cursor-pointer outline-dashed rounded-full border-none outline-2 outline-offset-3 p-10 outline-inputBorder bg-btnBg focus:outline-white focus:outline  "
         >
             <div className="flex flex-row align-center">
                 {icon}
