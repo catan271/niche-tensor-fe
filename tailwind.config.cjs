@@ -15,6 +15,15 @@ module.exports = {
             screens: {
                 pc: '1200px',
             },
+            colors: {
+                background: '#292c31',
+                inputBorder: '#3E4145',
+                textColor: '#a4a5a7',
+                placeholder: '#6f7070',
+                options: '#36383d',
+                background2: '#212428',
+                danger: '#D04848',
+            },
         },
     },
     variants: {

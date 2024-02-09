@@ -26,7 +26,8 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
-.env*.local
+.env
+.env.local
 
 # vercel
 .vercel
@@ -34,3 +35,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+/.idea/.gitignore
+/.idea/modules.xml
+/.idea/niche-tensor-fe.iml
+/.idea/vcs.xml
+/.idea/jsLinters/eslint.xml
+/.idea/inspectionProfiles/Project_Default.xml
