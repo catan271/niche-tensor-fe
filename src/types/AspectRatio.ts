@@ -5,21 +5,21 @@ export enum AspectRatio {
 }
 
 export type RatioPair = {
-    w: number;
-    h: number;
+    width: number;
+    height: number;
 };
 
 export const AspectRatioValue: Record<AspectRatio, RatioPair> = {
     Square: {
-        w: 1,
-        h: 1,
+        width: 1024,
+        height: 1024,
     },
     Wide: {
-        w: 3,
-        h: 2,
+        width: 1024,
+        height: 768,
     },
     Tall: {
-        w: 2,
-        h: 3,
+        width: 768,
+        height: 1024,
     },
 };

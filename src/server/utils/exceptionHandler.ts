@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { ApiError } from '../../types/ApiError';
+import { ApiError } from '@/types/ApiError';
 
 export function exceptionHandler(error: unknown, req: NextApiRequest, res: NextApiResponse<ApiError>) {
     let message = 'Error';
