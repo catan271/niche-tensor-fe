@@ -11,7 +11,6 @@ import { generateImage } from '../client/requests/generate';
 import { initialValues } from '../client/constants/initialValues';
 import { CloseCircleOutlined } from '@ant-design/icons';
 import { exampleData } from '../client/constants/exampleData';
-import Image from 'next/image';
 
 enum Status {
     Blank,
@@ -50,6 +49,7 @@ export default function Home() {
         } catch {
             setStatus(Status.Error);
         } finally {
+            document.querySelector('#image-panel')?.scrollIntoView({ behavior: 'smooth' });
         }
     };
 
@@ -86,7 +86,7 @@ export default function Home() {
                                 autoSize
                             />
                         </Form.Item>
-                        <div className="flex space-x-8">
+                        <div className="flex flex-wrap gap-8">
                             <Form.Item name="modelName" rules={[{ required: true }]}>
                                 <CustomSelect
                                     placeholder="No model"
@@ -168,7 +168,10 @@ export default function Home() {
                     </div>
                 </Panel>
             </div>
-            <div className="md:col-span-5 col-span-12 md:h-full h-[calc(100vw-1.875rem*2)] flex flex-col overflow-hidden">
+            <div
+                id="image-panel"
+                className="md:col-span-5 col-span-12 md:h-full h-[calc(100vw-1.875rem*2)] flex flex-col overflow-hidden"
+            >
                 <Panel className="h-full flex flex-col items-center justify-center overflow-hidden">
                     {status === Status.Blank && <div>Your image will appear here</div>}
                     {status === Status.Loading && (
