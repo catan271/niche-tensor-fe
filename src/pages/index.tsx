@@ -10,6 +10,8 @@ import SvgIcon, { Icon } from '../client/components/Icon/SvgIcon';
 import { generateImage } from '../client/requests/generate';
 import { initialValues } from '../client/constants/initialValues';
 import { CloseCircleOutlined } from '@ant-design/icons';
+import { exampleData } from '../client/constants/exampleData';
+import Image from 'next/image';
 
 enum Status {
     Blank,
@@ -51,11 +53,22 @@ export default function Home() {
         }
     };
 
-    const handleDownload = async () => {};
+    const handleDownload = async () => {
+        if (image) {
+            const downloadLink = document.createElement('a');
+            downloadLink.href = image;
+            downloadLink.download = 'download.png';
+            downloadLink.click();
+        }
+    };
+
+    const handleClickExample = (examplePrompt: string) => {
+        form.setFieldValue('prompt', examplePrompt);
+    };
 
     return (
         <div className="home-page flex-1 mb-0 grid grid-cols-12 gap-24 min-h-400">
-            <div className="col-span-7 flex flex-col space-y-12">
+            <div className="md:col-span-7 col-span-12 flex flex-col space-y-12">
                 <Panel>
                     <Form
                         form={form}
@@ -134,9 +147,28 @@ export default function Home() {
                         Generate
                     </Button>
                 </div>
-                <Panel className="flex-1 min-h-200"></Panel>
+                <Panel className="flex-1 min-h-200">
+                    <div className="flex gap-8 h-full">
+                        {exampleData.map((item, index) => {
+                            return (
+                                <div
+                                    key={index}
+                                    className="example-item"
+                                    onClick={() => handleClickExample(item.prompt)}
+                                >
+                                    <img
+                                        alt={item.prompt}
+                                        className="example-item__img"
+                                        src={`/images/example/${item.image}`}
+                                    />
+                                    <p className="example-item__prompt">{item.prompt}</p>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </Panel>
             </div>
-            <div className="col-span-5 h-full flex flex-col overflow-hidden">
+            <div className="md:col-span-5 col-span-12 md:h-full h-[calc(100vw-1.875rem*2)] flex flex-col overflow-hidden">
                 <Panel className="h-full flex flex-col items-center justify-center overflow-hidden">
                     {status === Status.Blank && <div>Your image will appear here</div>}
                     {status === Status.Loading && (
